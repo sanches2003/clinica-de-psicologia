@@ -58,7 +58,7 @@ class AgendamentoController extends Controller
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
         $agendamento = Agendamento::findOrFail($id);
-        return view('agendamento.edit', compact('agendamento'));
+        return view('agendamento.edit', compact('agendamento', 'pacientes'));
     }
 
     /**
