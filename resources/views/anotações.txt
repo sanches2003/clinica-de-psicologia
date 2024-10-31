@@ -1,0 +1,9 @@
+Por onde começo?
+
+Alisson -> Coisas mais simples, consigo fazer num tempo razoável sem muita dificuldade.
+Ana Paula -> Muito mais desafiador, tenho medo de não conseguir.
+Vanessa -> Muita coisa para fazer, porém consigo fazer tudo, muita repetição de código.
+Viviani -> Pesquisar sobre como fazer relatórios com C# Asp.net.
+
+
+No Trabalho da Ana -> Estou adicionando as listas e os produtos normalmente e exibindo, porém estou com dificuldade de adicionar o produto a apenas a lista que eu entrei.

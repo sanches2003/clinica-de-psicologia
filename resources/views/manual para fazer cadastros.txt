@@ -1,0 +1,4 @@
+Criar pastinha com o nome da tabela;
+Ficar atento na controller, com as variáveis no plural, questões principalmente do EDIT, CREATE talvez.
+Copiar e colar do Avalição Psicológica;
+Seguir os modelos conforme existe na pasta.
