@@ -16,8 +16,9 @@ class PrescricaoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId)->get();
-        $prescricaos = Prescricao::whereIn('paciente_id', $pacientes[0]->id)->get();
-        return view("prescricao.index", compact('precricaos')); 
+        $pacientesId = $pacientes->pluck('id');
+        $prescricaos = Prescricao::whereIn('paciente_id', $pacientesId)->get();
+        return view("prescricao.index", compact('prescricaos')); 
     }
 
     /**
@@ -35,7 +36,7 @@ class PrescricaoController extends Controller
      */
     public function store(Request $request)
     {
-        Paciente::create($request->all());
+        Prescricao::create($request->all());
         return redirect()->route('prescricao.index')
                 ->with('insercao', 'Inserido com sucesso!');
     }
@@ -45,8 +46,8 @@ class PrescricaoController extends Controller
      */
     public function show(string $id)
     {
-        $prescricaos = Prescricao::findOrFail($id);
-        return view('prescricao.show', compact('prescricaos'));
+        $prescricao = Prescricao::findOrFail($id);
+        return view('prescricao.show', compact('prescricao'));
     }
 
     /**
@@ -56,8 +57,8 @@ class PrescricaoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
-        $prescricaos = Prescricao::findOrFail($id);
-        return view('prescricao.edit', compact('prescricaos', 'pacientes'));
+        $prescricao = Prescricao::findOrFail($id);
+        return view('prescricao.edit', compact('prescricao', 'pacientes'));
     }
 
     /**
@@ -65,8 +66,8 @@ class PrescricaoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $prescricaos = Prescricao::findOrFail($id);
-        $prescricaos->update($request->all());
+        $prescricao = Prescricao::findOrFail($id);
+        $prescricao->update($request->all());
         return redirect()->route('prescricao.index')
         ->with('alteracao', 'Atualizado com sucesso!');
     }

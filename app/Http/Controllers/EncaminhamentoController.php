@@ -16,7 +16,8 @@ class EncaminhamentoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId)->get();
-        $encaminhamentos = Encaminhamento::whereIn('paciente_id', $pacientes[0]->id)->get();
+        $pacientesId = $pacientes->pluck('id');
+        $encaminhamentos = Encaminhamento::whereIn('paciente_id', $pacientesId)->get();
         return view("encaminhamento.index", compact('encaminhamentos')); 
     }
 
@@ -35,7 +36,7 @@ class EncaminhamentoController extends Controller
      */
     public function store(Request $request)
     {
-        Paciente::create($request->all());
+        Encaminhamento::create($request->all());
         return redirect()->route('encaminhamento.index')
                 ->with('insercao', 'Inserido com sucesso!');
     }
@@ -45,8 +46,8 @@ class EncaminhamentoController extends Controller
      */
     public function show(string $id)
     {
-        $encaminhamentos = Encaminhamento::findOrFail($id);
-        return view('encaminhamento.show', compact('encaminhamentos'));
+        $encaminhamento = Encaminhamento::findOrFail($id);
+        return view('encaminhamento.show', compact('encaminhamento'));
     }
 
     /**
@@ -56,8 +57,8 @@ class EncaminhamentoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
-        $encaminhamentos = Encaminhamento::findOrFail($id);
-        return view('encaminhamento.edit', compact('encaminhamentos', 'pacientes'));
+        $encaminhamento = Encaminhamento::findOrFail($id);
+        return view('encaminhamento.edit', compact('encaminhamento', 'pacientes'));
     }
 
     /**
@@ -65,8 +66,8 @@ class EncaminhamentoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $encaminhamentos = Encaminhamento::findOrFail($id);
-        $encaminhamentos->update($request->all());
+        $encaminhamento = Encaminhamento::findOrFail($id);
+        $encaminhamento->update($request->all());
         return redirect()->route('encaminhamento.index')
         ->with('alteracao', 'Atualizado com sucesso!');
     }

@@ -19,7 +19,6 @@ class AvaliacaoPsicologicaController extends Controller
         $pacientesId = $pacientes->pluck('id');
         $avaliacoes = AvalicaoPsicologica::whereIn('paciente_id', $pacientesId)->get();
         return view("avaliacao.index", compact('avaliacoes'));    
-
     }
 
     /**

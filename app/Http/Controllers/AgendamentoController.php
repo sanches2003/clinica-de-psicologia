@@ -16,7 +16,8 @@ class AgendamentoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId)->get();
-        $agendamento = Agendamento::whereIn('paciente_id', $pacientes[0]->id)->get();
+        $pacientesId = $pacientes->pluck('id');
+        $agendamentos = Agendamento::whereIn('paciente_id', $pacientesId)->get();
         return view("agendamento.index", compact('agendamentos'));  
     }
 
@@ -54,6 +55,8 @@ class AgendamentoController extends Controller
      */
     public function edit(string $id)
     {
+        $userId = Auth::id();
+        $pacientes = Paciente::where('user_id', $userId) -> get();  
         $agendamento = Agendamento::findOrFail($id);
         return view('agendamento.edit', compact('agendamento'));
     }

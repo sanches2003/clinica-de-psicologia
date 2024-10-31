@@ -19,7 +19,7 @@
             </select>
         </div>
         <!-- Observações -->
-        <div class="form-diagnostico">
+        <div class="form-group">
             <label for="diagnostico">Diagnóstico</label>
             <textarea id="diagnostico" name="diagnostico" class="form-control" rows="4" required>
                 {{$diagnostico->diagnostico}}

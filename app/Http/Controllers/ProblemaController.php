@@ -16,7 +16,8 @@ class ProblemaController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId)->get();
-        $problemas = Problema::whereIn('paciente_id', $pacientes[0]->id)->get();
+        $pacientesId = $pacientes->pluck('id');
+        $problemas = Problema::whereIn('paciente_id', $pacientesId)->get();
         return view("problema.index", compact('problemas')); 
     }
 
@@ -26,8 +27,8 @@ class ProblemaController extends Controller
     public function create()
     {
         $userId = Auth::id();
-        $problemas = Paciente::where('user_id', $userId) -> get();
-        return view("problema.create", compact('problemas'));
+        $pacientes = Paciente::where('user_id', $userId) -> get();
+        return view("problema.create", compact('pacientes'));
     }
 
     /**
@@ -35,7 +36,7 @@ class ProblemaController extends Controller
      */
     public function store(Request $request)
     {
-        Paciente::create($request->all());
+        Problema::create($request->all());
         return redirect()->route('problema.index')
                 ->with('insercao', 'Inserido com sucesso!');
     }
@@ -45,8 +46,8 @@ class ProblemaController extends Controller
      */
     public function show(string $id)
     {
-        $problemas = Paciente::findOrFail($id);
-        return view('problema.show', compact('problemas'));
+        $problema = Problema::findOrFail($id);
+        return view('problema.show', compact('problema'));
     }
 
     /**
@@ -56,8 +57,8 @@ class ProblemaController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
-        $problemas = Paciente::findOrFail($id);
-        return view('problema.edit', compact('problemas', 'pacientes'));
+        $problema = Problema::findOrFail($id);
+        return view('problema.edit', compact('problema', 'pacientes'));
     }
 
     /**
@@ -65,8 +66,8 @@ class ProblemaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $problemas = Paciente::findOrFail($id);
-        $problemas->update($request->all());
+        $problema = Problema::findOrFail($id);
+        $problema->update($request->all());
         return redirect()->route('problema.index')
         ->with('alteracao', 'Atualizado com sucesso!');
     }

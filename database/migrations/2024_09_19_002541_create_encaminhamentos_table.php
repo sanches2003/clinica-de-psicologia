@@ -20,7 +20,7 @@ return new class extends Migration
                         ->onDelete('restrict');
             $table->date("data");
             $table->string("nome_profissional", 255);
-            $table-> text("descricao");
+            $table->text("descricao");
             $table->timestamps();
         });
     }

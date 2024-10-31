@@ -21,13 +21,13 @@
         <!-- Observações -->
         <div class="form-group">
             <label for="notas">Notas</label>
-            <textarea id="notas" name="notas" class="form-control" rows="4" required>
+            <textarea id="notas" name="notas" class="form-control" rows="1" required>
                 {{$terapia->notas}}
             </textarea>
         </div>
         <div class="form-group">
             <label for="tecnica">Técnica</label>
-            <textarea id="tecnica" name="tecnica" class="form-control" rows="4" required>
+            <textarea id="tecnica" name="tecnica" class="form-control" rows="1" required>
                 {{$terapia->tecnica}}
             </textarea>
         </div>

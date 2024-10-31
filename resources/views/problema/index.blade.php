@@ -9,13 +9,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($evolucaos as $evolucao)
+            @foreach($problemas as $problema)
                 <tr>
-                    <td>{{ $evolucao->paciente->nome }}</td>
-                    <td>{{ $evolucao->data_identificacao }}</td>
+                    <td>{{ $problema->paciente->nome }}</td>
+                    <td>{{ $problema->data_identificacao }}</td>
                     <td>
-                        <a href="/evolucao/{{$prescricao->id}}" class="btn btn-secondary">Ver Registro</a>
-                        <a href="/evolucao/{{$prescricao->id}}/edit" class="btn btn-warning">Alterar Registro</a>
+                        <a href="/problema/{{$problema->id}}" class="btn btn-secondary">Ver Registro</a>
+                        <a href="/problema/{{$problema->id}}/edit" class="btn btn-warning">Alterar Registro</a>
                     </td>
             @endforeach
     </table>

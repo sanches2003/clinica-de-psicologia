@@ -31,12 +31,12 @@ class TratamentoController extends Controller
         return view("tratamento.create", compact('pacientes'));
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        Paciente::create($request->all());
+        Tratamento::create($request->all());
         return redirect()->route('tratamento.index')
                 ->with('insercao', 'Inserido com sucesso!');
     }
@@ -46,7 +46,7 @@ class TratamentoController extends Controller
      */
     public function show(string $id)
     {
-        $tratamentos = Paciente::findOrFail($id);
+        $tratamento = Tratamento::findOrFail($id);
         return view('tratamento.show', compact('tratamento'));
     }
 
@@ -57,7 +57,7 @@ class TratamentoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
-        $tratamentos = Paciente::findOrFail($id);
+        $tratamento = Tratamento::findOrFail($id);
         return view('tratamento.edit', compact('tratamento', 'pacientes'));
     }
 
@@ -66,8 +66,8 @@ class TratamentoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $tratamentos = Paciente::findOrFail($id);
-        $tratamentos->update($request->all());
+        $tratamento = Tratamento::findOrFail($id);
+        $tratamento->update($request->all());
         return redirect()->route('tratamento.index')
         ->with('alteracao', 'Atualizado com sucesso!');
     }

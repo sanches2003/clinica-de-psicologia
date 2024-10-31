@@ -16,7 +16,8 @@ class TerapiaController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId)->get();
-        $terapias = Terapia::whereIn('paciente_id', $pacientes[0]->id)->get();
+        $pacientesId = $pacientes->pluck('id');
+        $terapias = Terapia::whereIn('paciente_id', $pacientesId)->get();
         return view("terapia.index", compact('terapias')); 
     }
 
@@ -26,8 +27,8 @@ class TerapiaController extends Controller
     public function create()
     {
         $userId = Auth::id();
-        $terapias = Paciente::where('user_id', $userId) -> get();
-        return view("terapia.create", compact('terapias'));
+        $pacientes = Paciente::where('user_id', $userId) -> get();
+        return view("terapia.create", compact('pacientes'));
     }
 
     /**
@@ -35,7 +36,7 @@ class TerapiaController extends Controller
      */
     public function store(Request $request)
     {
-        Paciente::create($request->all());
+        Terapia::create($request->all());
         return redirect()->route('terapia.index')
                 ->with('insercao', 'Inserido com sucesso!');
     }
@@ -45,8 +46,8 @@ class TerapiaController extends Controller
      */
     public function show(string $id)
     {
-        $terapias = Paciente::findOrFail($id);
-        return view('terapia.show', compact('terapias'));
+        $terapia = Terapia::findOrFail($id);
+        return view('terapia.show', compact('terapia'));
     }
 
     /**
@@ -56,8 +57,8 @@ class TerapiaController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
-        $terapias = Paciente::findOrFail($id);
-        return view('terapia.edit', compact('terapias', 'pacientes'));
+        $terapia = Terapia::findOrFail($id);
+        return view('terapia.edit', compact('terapia', 'pacientes'));
     }
 
     /**
@@ -65,8 +66,8 @@ class TerapiaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $terapias = Paciente::findOrFail($id);
-        $terapias->update($request->all());
+        $terapia = Terapia::findOrFail($id);
+        $terapia->update($request->all());
         return redirect()->route('terapia.index')
         ->with('alteracao', 'Atualizado com sucesso!');
     }

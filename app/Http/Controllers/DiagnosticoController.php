@@ -16,7 +16,8 @@ class DiagnosticoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId)->get();
-        $diagnosticos = Diagnostico::whereIn('paciente_id', $pacientes[0]->id)->get();
+        $pacientesId = $pacientes->pluck('id');
+        $diagnosticos = Diagnostico::whereIn('paciente_id', $pacientesId)->get();  
         return view("diagnostico.index", compact('diagnosticos'));  
     }
 
@@ -45,8 +46,8 @@ class DiagnosticoController extends Controller
      */
     public function show(string $id)
     {
-        $diagnosticos = Diagnostico::findOrFail($id);
-        return view('diagnostico.show', compact('diagnosticos'));
+        $diagnostico = Diagnostico::findOrFail($id);
+        return view('diagnostico.show', compact('diagnostico'));
     }
 
     /**
@@ -56,8 +57,8 @@ class DiagnosticoController extends Controller
     {
         $userId = Auth::id();
         $pacientes = Paciente::where('user_id', $userId) -> get();  
-        $diagnosticos = Diagnostico::findOrFail($id);
-        return view('diagnostico.edit', compact('diagnosticos', 'pacientes'));
+        $diagnostico = Diagnostico::findOrFail($id);
+        return view('diagnostico.edit', compact('diagnostico', 'pacientes'));
     }
 
     /**

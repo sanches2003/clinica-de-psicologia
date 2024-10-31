@@ -12,7 +12,6 @@
         <a href="/terapia" class="btn btn-primary">Terapia</a>
         <a href="/problema" class="btn btn-primary">Problema</a>
         <a href="/tratamento" class="btn btn-primary">Tratamento</a>
-        <a href="/user" class="btn btn-primary">Usuários</a>
     </x-slot>
 
     <div class="py-12">

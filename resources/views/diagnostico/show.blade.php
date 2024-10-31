@@ -7,7 +7,7 @@
         </div>
         <div class="form-group">
             <label for="paciente_id">Paciente</label>
-            <p>{{$diagostico->paciente->nome}}</p>
+            <p>{{$diagnostico->paciente->nome}}</p>
         </div>
         <!-- Observações -->
         <div class="form-group">

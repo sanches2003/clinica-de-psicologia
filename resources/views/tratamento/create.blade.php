@@ -6,7 +6,7 @@
         <div class="form-group">
             <label for="data_inicio">Data Início</label>
             <input type="date" id="data_inicio" 
-                name="data_avaliacao" class="form-control" required>
+                name="data_inicio" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="paciente_id">Paciente</label>
@@ -20,11 +20,11 @@
         <!-- Observações -->
         <div class="form-group">
             <label for="objetivos">Objetivos</label>
-            <textarea id="objetivos" name="objetivos" class="form-control" rows="4" required></textarea>
+            <textarea id="objetivos" name="objetivos" class="form-control" rows="2" required></textarea>
         </div>
         <div class="form-group">
             <label for="progresso">Progresso</label>
-            <textarea id="progresso" name="progresso" class="form-control" rows="4" required></textarea>
+            <textarea id="progresso" name="progresso" class="form-control" rows="2" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
