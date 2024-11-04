@@ -137,10 +137,14 @@
             <p>{{$problema->paciente->nome}}</p>
         </div>
         <div class="form-group">
+            <label for="condicao">Condição do Paciente</label>
+            <p>{{$problema->condicao}}</p>
+        </div>
+        <div class="form-group">
             <label for="evolucao">Evolução</label>
             <p>{{$problema->evolucao}}</p>
         </div>
-        <a href="/problemas" class="btn">Voltar</a>
+        <a href="/problema" class="btn">Voltar</a>
     </div>
 
 </body>

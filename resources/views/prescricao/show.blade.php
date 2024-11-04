@@ -140,7 +140,7 @@
             <label for="descricao">Descrição</label>
             <p>{{$prescricao->descricao}}</p>
         </div>
-        <a href="/prescricoes" class="btn">Voltar</a>
+        <a href="/prescricao" class="btn">Voltar</a>
     </div>
 
 </body>

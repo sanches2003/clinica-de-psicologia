@@ -144,7 +144,7 @@
             <label for="tecnica">Técnica</label>
             <p>{{$terapia->tecnica}}</p>
         </div>
-        <a href="/terapias" class="btn">Voltar</a>
+        <a href="/terapia" class="btn">Voltar</a>
     </div>
 
 </body>

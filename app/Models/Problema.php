@@ -12,6 +12,7 @@ class Problema extends Model
 
     protected $fillable = ["paciente_id",
                             "data_identificacao",
+                            "condicao",
                             "evolucao"];
                             public function paciente(){
                                 return $this->belongsTo(Paciente::class);

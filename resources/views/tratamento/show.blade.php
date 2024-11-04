@@ -144,7 +144,7 @@
             <label for="progresso">Progresso</label>
             <p>{{$tratamento->progresso}}</p>
         </div>
-        <a href="/tratamentos" class="btn">Voltar</a>
+        <a href="/tratamento" class="btn">Voltar</a>
     </div>
 
 </body>

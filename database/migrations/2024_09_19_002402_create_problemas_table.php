@@ -18,6 +18,7 @@ return new class extends Migration
                         ->references('id')
                         ->on('pacientes')
                         ->onDelete('restrict');
+            $table->text("condicao");
             $table->date("data_identificacao");
             $table->text("evolucao");
             $table->timestamps();

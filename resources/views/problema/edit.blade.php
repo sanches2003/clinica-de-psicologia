@@ -139,6 +139,10 @@
         </div>
         <!-- Observações -->
         <div class="form-group">
+            <label for="condicao">Condição do Paciente</label>
+            <textarea id="condicao" name="condicao" class="form-control" rows="4" required>{{$problema->condicao}}</textarea>
+        </div>
+        <div class="form-group">
             <label for="evolucao">Evolução</label>
             <textarea id="evolucao" name="evolucao" class="form-control" rows="4" required>{{$problema->evolucao}}</textarea>
         </div>

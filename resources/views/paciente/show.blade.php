@@ -144,7 +144,7 @@
             <label for="email">Email</label>
             <p>{{$paciente->email}}</p>
         </div>
-        <a href="/pacientes" class="btn">Voltar</a>
+        <a href="/paciente" class="btn">Voltar</a>
     </div>
 
 </body>
